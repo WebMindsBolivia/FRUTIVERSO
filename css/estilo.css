@@ -1,0 +1,355 @@
+/* Importamos la fuente "Poppins" para darle un estilo moderno,
+   limpio y elegante a los textos de toda la página.*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+/* CONFIGURACIÓN GLOBAL DEL DOCUMENTO
+   Se utiliza box-sizing: border-box en todos los elementos para 
+   que los paddings y borders no aumenten el tamaño total.
+   Esto permite un diseño más controlado y evita cálculos extra. */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
+/* ESTILO GENERAL DEL BODY
+   - Se aplica la fuente importada.
+   - Se elimina el margen por defecto del navegador.
+   - Se establece el color principal del texto.
+   - Se utiliza un fondo rosado pastel para dar estética suave. */
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    color: #333;
+    background-color: #C4B4FF; /* Color pastel */
+}
+
+/* Contenedor general que centra el contenido y regula su ancho */
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;       /* Centra el contenido */
+    padding: 0 20px;      /* Espacio lateral */
+}
+
+/* Todas las imágenes se adaptan al contenedor */
+img {
+    max-width: 100%;
+    display: block;       /* Elimina espacios fantasma debajo de imágenes */
+}
+
+
+/* ENCABEZADO (HEADER) */
+.site-header {
+    background-color: #C4B4FF;  /* Fondo */
+    text-align: center;       /* Centra su contenido */
+    padding: 20px 0;
+}
+
+
+/* CONTENEDOR DEL LOGO + NOMBRE
+   Se usa flexbox para colocarlos uno al lado del otro.
+   gap controla el espacio entre ellos. */
+.logo-nombre {
+    display: flex;               /* Elementos en una sola fila */
+    justify-content: center;     /* Centra horizontalmente */
+    align-items: center;         /* Alinea verticalmente */
+    gap: 10px;                   /* Espacio entre las imágenes */
+    position: relative;          /*permite modificar posiciones internas*/
+}
+
+/* Tamaño del logo principal (icono o símbolo) */
+.logo {
+    width: 100px;   /* Logotipo pequeño */
+    position:absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* Imagen del nombre "Frutiverso" */
+.nombre-img {
+    width: 500px;   /* Nombre más grande para destacar */
+    height: auto;
+    margin: 0 auto;
+}
+
+
+/* BARRA DE NAVEGACIÓN*/
+.barra {
+    background-color: #FFDC5C; /* Verde pastel suave */
+}
+
+/* Estilo del contenedor de navegación */
+.navegacion-principal {
+    text-align: center; 
+}
+
+/* Estilo de cada enlace del menú */
+.navegacion-principal a {
+    color: rgb(51, 126, 102); /* Verde */
+    text-decoration: none;     /* Sin subrayado */
+    font-size: 25px;
+    display: inline-block;     /* Permite padding vertical */
+    padding: 19px 22px;
+}
+
+/* Efecto al pasar el mouse por encima */
+.navegacion-principal a:hover {
+    background-color: #E5E5E5; /* Cambio de color */
+    transition: background-color 0.3s;
+}
+
+
+/* SECCIÓN HERO (PORTADA PRINCIPAL) */
+/* HERO CON IMAGEN REPETIDA + OSCURECIDA */
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 100px 20px;
+
+    /* Imagen repetida como mosaico EXACTAMENTE como en tu captura */
+    background-image: url('../img/hero.jpg');
+    background-repeat: repeat;       /*Mantiene muchas repeticiones */
+    background-size: 600px auto;     /* Ajusta tamaño sin deformar */
+    background-position: center;
+    color: white;
+    z-index: 1;
+}
+
+/* Gradiente oscuro encima */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    ); /* Ajusta la intensidad si quieres */
+    z-index: 2;
+}
+
+/* Para que el texto quede encima del gradiente */
+.hero * {
+    position: relative;
+    z-index: 3;
+}
+
+
+/*TÍTULOS GENERALES*/
+h2 {
+    color: #5f9e6b;               /* Verde pastel */
+    text-align: center;
+    margin: 40px 0 20px;
+}
+
+
+/* Quita subrayado a títulos que son enlaces */
+.titulo-producto {
+    text-decoration: none;
+}
+
+
+/* GRID DE LOS PRODUCTOS (CATÁLOGO) */
+.productos-grid {
+    display: grid; /* Organiza los productos en forma de cuadricula */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    /* auto-fit hace que los productos se acomoden solos */
+    gap: 2rem;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+
+/* TARJETAS DE PRODUCTOS */
+.producto {
+    background-color: white;
+    border-radius: 12px; /* Bordes redondeados */
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Sombra suave */
+    transition: transform 0.3s;  /* Animación suave */
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Animación al pasar el mouse */
+.producto:hover {
+    transform: scale(1.05); /* Aumenta 5% */
+}
+
+
+/* IMÁGENES CON MOVIMIENTO (EFECTO ANIMADO) */
+.mov-img {
+    border-radius: 12px;
+    height: 200px;
+    object-fit: cover;      /* La imagen se ajusta sin deformarse */
+    transition: transform 0.3s;
+}
+
+/* Aumenta tamaño al pasar el mouse */
+.mov-img:hover {
+    transform: scale(1.15);
+}
+
+
+/* SECCIÓN DETALLE DEL PRODUCTO
+   (Aparece cuando se hace clic en un producto) */
+.detalle {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 25px;
+}
+
+/* Imagen del producto en la sección interna */
+.mov-img-grande {
+    width: 250px;
+    margin: 15px auto;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.mov-img-grande:hover {
+    transform: scale(1.12);
+}
+
+
+/* MENSAJE DESTACADO (BANNER) */
+.mensaje {
+    background-color: #D8F999; /* Fondo suave */
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+
+/* REDES SOCIALES */
+.iconos-redes {
+    display: flex;       /* Iconos alineados en fila */
+    justify-content: center;
+    gap: 20px;           /* Espacio uniforme entre iconos */
+}
+
+.iconos-redes img {
+    border-radius: 12px;
+    height: 50px;          /* Iconos pequeños */
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+/* Animación divertida (crecimiento + rotación) */
+.iconos-redes img:hover {
+    transform: scale(1.3) rotate(10deg);
+}
+
+
+/*    SECCIÓN NOSOTROS */
+.nosotros {
+    display: grid; /* Acomoda texto e imagen en filas */
+    grid-template-rows: repeat(2, auto);
+}
+
+/* En pantallas grandes → acomodar en 2 columnas */
+@media (min-width: 768px) {
+    .nosotros {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem; /* Espacio entre columnas */
+    }
+}
+
+/* Controla el orden de la imagen */
+.nosotros__imagen {
+    grid-row: 1 / 2;
+}
+
+@media (min-width: 768px) {
+    .nosotros__imagen {
+        grid-column: 2 / 3;
+    }
+}
+
+
+/* BLOQUES DE INFORMACIÓN (Precio, Envío, Calidad, Rapidez) */
+.bloques {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en móviles */
+    gap: 2rem;
+}
+
+/* En pantallas grandes → 4 columnas */
+@media (min-width: 768px) {
+    .bloques {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.bloque {
+    text-align: center;
+}
+
+/* Imágenes circulares de los bloques */
+.bloque img {
+    width: 200px;
+    height: 150px;
+    border-radius: 50%; /* Forma redonda */
+    background-color: #00b8e4; /* Color llamativo */
+}
+
+/* Título del bloque */
+.bloque__titulo {
+    margin: 0;
+}
+
+
+/* PIE DE PÁGINA (FOOTER) */
+.footer-sitio {
+    background-color: #C68AFF; /* rosado suave */
+    color: rgba(255, 255, 255, 0) (19, 18, 18);
+    padding: 20px 10px;
+    text-align: center;
+}
+/* FOOTER – CONTACTOS*/
+
+/* Enlace del teléfono */
+.telefono {
+    color: white;      /* Color del texto */
+    font-weight: bold; /* Hace que resalte */
+    text-decoration: none;
+}
+
+.telefono:hover {
+    text-decoration: underline; /* Efecto al pasar el mouse */
+}
+
+/* Ícono de WhatsApp */
+.icono-whatsapp {
+    width: 30px;
+    height: 30px;
+    margin-left: 8px; /* Separación respecto al número */
+    vertical-align: middle;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+/* Efecto al pasar el mouse */
+.icono-whatsapp:hover {
+    transform: scale(1.2);
+}
+
+/* Distribución del pie en columnas */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+}
+
+/* Línea final del pie */
+.copyrigth {
+    background-color: #FCCEE8;
+    padding: 12px;
+    margin-top: 12px;
+}
