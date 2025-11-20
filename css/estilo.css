@@ -77,6 +77,26 @@ img {
     margin: 0 auto;
 }
 
+/* ======= RESPONSIVE PARA TELÉFONOS ======= */
+@media (max-width: 600px) {
+
+    /* Ajustar encabezado */
+    .site-header {
+        padding: 10px;
+    }
+
+    /* El logo pequeño se reduce en celulares */
+    .logo {
+        width: 55px;
+        left: 5px;
+    }
+
+    /* El nombre FRUITIVERSO se hace más pequeño */
+    .nombre-img {
+        width: 220px;
+    }
+}
+
 
 /* BARRA DE NAVEGACIÓN*/
 .barra {
@@ -352,4 +372,5 @@ h2 {
     background-color: #FCCEE8;
     padding: 12px;
     margin-top: 12px;
+
 }
